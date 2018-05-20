@@ -248,12 +248,18 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="username"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nzK-9J-BMJ" id="3oD-at-4tH"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="2kf-W2-tph">
                                 <rect key="frame" x="16" y="337" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nzK-9J-BMJ" id="hZs-sU-Se9"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEU-NY-got">
                                 <rect key="frame" x="152" y="183" width="71" height="21"/>
@@ -400,7 +406,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                 <connections>
-                                    <outlet property="delegate" destination="qWi-qB-46D" id="fLS-6l-8RI"/>
+                                    <action selector="editingChanged:" destination="qWi-qB-46D" eventType="editingChanged" id="irq-uh-2II"/>
+                                    <outlet property="delegate" destination="qWi-qB-46D" id="k3w-dw-msx"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eqh-Oh-sDc">
@@ -412,7 +419,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                 <connections>
-                                    <outlet property="delegate" destination="qWi-qB-46D" id="O5P-Sn-YHI"/>
+                                    <action selector="editingChanged:" destination="qWi-qB-46D" eventType="editingChanged" id="ubA-KO-U0y"/>
+                                    <outlet property="delegate" destination="qWi-qB-46D" id="3R4-Wu-HwS"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P5J-xy-r6k">
@@ -424,7 +432,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                 <connections>
-                                    <outlet property="delegate" destination="qWi-qB-46D" id="Pte-a5-xQH"/>
+                                    <action selector="editingChanged:" destination="qWi-qB-46D" eventType="editingChanged" id="0O9-M1-Ggg"/>
+                                    <outlet property="delegate" destination="qWi-qB-46D" id="f97-Bk-VH8"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLK-qn-WUx">
@@ -465,7 +474,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                 <connections>
-                                    <outlet property="delegate" destination="qWi-qB-46D" id="4qd-gr-mbB"/>
+                                    <action selector="editingChanged:" destination="qWi-qB-46D" eventType="editingChanged" id="pL9-94-4wN"/>
+                                    <outlet property="delegate" destination="qWi-qB-46D" id="tDw-5R-mzC"/>
                                 </connections>
                             </textField>
                         </subviews>
