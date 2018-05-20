@@ -484,6 +484,7 @@
                             <constraint firstItem="1kT-Bg-b3C" firstAttribute="centerX" secondItem="mBQ-Rk-2RO" secondAttribute="centerX" constant="-20" id="3e4-ti-JNS"/>
                             <constraint firstItem="EN2-sH-t3v" firstAttribute="centerX" secondItem="mBQ-Rk-2RO" secondAttribute="centerX" id="5gA-7n-EtY"/>
                             <constraint firstItem="Eqh-Oh-sDc" firstAttribute="centerY" secondItem="0Nb-Hl-lHc" secondAttribute="centerY" id="AIo-7c-bUN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LLR-OW-tID" secondAttribute="trailing" id="BEj-68-4Ph"/>
                             <constraint firstItem="0Nb-Hl-lHc" firstAttribute="centerX" secondItem="mBQ-Rk-2RO" secondAttribute="centerX" constant="-60" id="CRA-9H-cCT"/>
                             <constraint firstItem="0Nb-Hl-lHc" firstAttribute="top" secondItem="mBQ-Rk-2RO" secondAttribute="top" constant="169" id="Esi-50-8UT"/>
                             <constraint firstItem="EN2-sH-t3v" firstAttribute="top" secondItem="0H4-nX-3O5" secondAttribute="bottom" constant="31" id="Goa-6D-xts"/>
@@ -494,7 +495,6 @@
                             <constraint firstItem="nER-Uv-rTV" firstAttribute="centerX" secondItem="0Nb-Hl-lHc" secondAttribute="centerX" id="XbG-Cm-OZi"/>
                             <constraint firstItem="Eqh-Oh-sDc" firstAttribute="centerX" secondItem="mBQ-Rk-2RO" secondAttribute="centerX" constant="20" id="Zf7-Md-DE6"/>
                             <constraint firstItem="Eqh-Oh-sDc" firstAttribute="top" secondItem="lOS-qe-FXh" secondAttribute="bottom" constant="19" id="fEq-Cd-YdE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LLR-OW-tID" secondAttribute="trailing" id="fiI-Il-aZV"/>
                             <constraint firstItem="1kT-Bg-b3C" firstAttribute="centerY" secondItem="0Nb-Hl-lHc" secondAttribute="centerY" id="m3k-Za-Yke"/>
                             <constraint firstItem="0JQ-OG-vI0" firstAttribute="centerX" secondItem="1kT-Bg-b3C" secondAttribute="centerX" id="mIY-7J-hoU"/>
                             <constraint firstItem="P5J-xy-r6k" firstAttribute="centerX" secondItem="mBQ-Rk-2RO" secondAttribute="centerX" constant="60" id="pU8-te-4vp"/>
@@ -506,9 +506,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButtonLeadingConstraint" destination="yKN-4m-OHk" id="Pwc-Pi-Msj"/>
+                        <outlet property="firstFLabel" destination="nER-Uv-rTV" id="qe4-MO-I14"/>
                         <outlet property="firstField" destination="0Nb-Hl-lHc" id="LwZ-9q-KZZ"/>
+                        <outlet property="fourthFLabel" destination="cLK-qn-WUx" id="A2i-bU-sGG"/>
                         <outlet property="fourthField" destination="P5J-xy-r6k" id="eam-M2-mPf"/>
+                        <outlet property="nextButtonTrailingConstant" destination="BEj-68-4Ph" id="lcV-Y0-uIP"/>
+                        <outlet property="secondFLabel" destination="0JQ-OG-vI0" id="Bgw-ez-OD6"/>
                         <outlet property="secondField" destination="1kT-Bg-b3C" id="dg4-9H-T8Z"/>
+                        <outlet property="textLabel" destination="EN2-sH-t3v" id="Axu-1H-oWM"/>
+                        <outlet property="textLabelTopConstraint" destination="Goa-6D-xts" id="D3c-9X-lqF"/>
+                        <outlet property="thirdFLabel" destination="lOS-qe-FXh" id="XSr-8p-dpN"/>
                         <outlet property="thirdField" destination="Eqh-Oh-sDc" id="Daj-5j-HGK"/>
                         <segue destination="lnl-au-HBQ" kind="show" identifier="SegueToMainNavigation" id="wWO-IB-d6h"/>
                     </connections>

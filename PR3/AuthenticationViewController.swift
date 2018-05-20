@@ -8,10 +8,23 @@
 import UIKit
 
 class AuthenticationViewController: UIViewController, UITextFieldDelegate {
+    // TexFields
     @IBOutlet weak var firstField: UITextField!
     @IBOutlet weak var secondField: UITextField!
     @IBOutlet weak var thirdField: UITextField!
     @IBOutlet weak var fourthField: UITextField!
+    
+    // Labels
+    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var firstFLabel: UILabel!
+    @IBOutlet weak var secondFLabel: UILabel!
+    @IBOutlet weak var thirdFLabel: UILabel!
+    @IBOutlet weak var fourthFLabel: UILabel!
+    
+    // Constraints
+    @IBOutlet var textLabelTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backButtonLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nextButtonTrailingConstant: NSLayoutConstraint!
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // We first check that the user is only entering numeric characters
@@ -76,7 +89,41 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         
         if validCode {
             // BEGIN-UOC-3
-            performSegue (withIdentifier: "SegueToMainNavigation", sender: self)
+            let width = view.frame.width
+            
+            self.textLabelTopConstraint.constant = -self.textLabelTopConstraint.constant
+            backButtonLeadingConstraint.constant = width
+            nextButtonTrailingConstant.constant = -width
+            
+            UIView.animate(withDuration: 1,
+                           delay: 0,
+                           options: [],
+                           animations: {
+                            
+                            
+                            
+                            self.firstField.alpha = 0
+                            self.secondField.alpha = 0
+                            self.thirdField.alpha = 0
+                            self.fourthField.alpha = 0
+                            
+                            self.firstFLabel.alpha = 0
+                            self.secondFLabel.alpha = 0
+                            self.thirdFLabel.alpha = 0
+                            self.fourthFLabel.alpha = 0
+                            
+                            self.view.layoutIfNeeded()
+                           
+                            
+            },
+                           completion: { _ in
+                            
+                            self.textLabel.alpha = 0
+                            self.performSegue (withIdentifier: "SegueToMainNavigation", sender: self)
+                            
+            })
+            
+            
             // END-UOC-3
         } else {
             let errorMessage = "Sorry, the entered code is not valid"
