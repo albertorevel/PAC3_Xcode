@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UITableViewController {
+class ProfileViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var currentProfile: Profile?
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -85,9 +85,36 @@ class ProfileViewController: UITableViewController {
     
     
     // BEGIN-UOC-5
-    //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-    //        saveProfileImage(image)
-    //    }
+    @IBAction func openCameraButton(sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera;
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        } else  if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary;
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        imagePicked.image = image
+//        dismiss(animated:true, completion: nil)
+//    }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+            let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+            profileImage.image = image
+            dismiss(animated: true, completion: { () -> Void in
+                 self.saveProfileImage(image)
+            })
+            
+        }
     // END-UOC-5
     
     // BEGIN-UOC-6
@@ -96,7 +123,7 @@ class ProfileViewController: UITableViewController {
     }
     
     func saveProfileImage(_ image: UIImage) {
-        
+        _ = image.imageOrientation
     }
     // END-UOC-6
     
