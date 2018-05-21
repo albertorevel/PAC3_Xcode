@@ -86,19 +86,18 @@ class ProfileViewController: UITableViewController, UIImagePickerControllerDeleg
     
     // BEGIN-UOC-5
     @IBAction func openCameraButton(sender: AnyObject) {
+        let imagePicker = UIImagePickerController()
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
             imagePicker.sourceType = .camera;
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
+           
         } else  if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary;
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
         }
+        
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true, completion: nil)
     }
     
 //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
