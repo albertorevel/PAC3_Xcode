@@ -27,11 +27,53 @@ class ProfileViewController: UITableViewController {
         profileImage.clipsToBounds = true
         
         currentProfile = loadProfileData()
+        // BEGIN-UOC-4
+        
+        // We initialize fields with loaded data
+        
+        nameField.text = currentProfile?.name
+        surnameField.text = currentProfile?.surname
+        streetAddressField.text = currentProfile?.streetAddress
+        cityField.text = currentProfile?.city
+        occupationField.text = currentProfile?.occupation
+        companyField.text = currentProfile?.company
+        
+        if let income = currentProfile?.income {
+            
+            incomeField.text = String(income)
+        }
+        
     }
     
-    
-    // BEGIN-UOC-4
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        switch textField {
+            
+        case nameField:
+            surnameField.becomeFirstResponder()
+            
+        case surnameField:
+            streetAddressField.becomeFirstResponder()
+            
+        case streetAddressField:
+            cityField.becomeFirstResponder()
+            
+        case cityField:
+            occupationField.becomeFirstResponder()
+            
+        case occupationField:
+            companyField.becomeFirstResponder()
+            
+        case companyField:
+            incomeField.becomeFirstResponder()
+            
+        default:
+            incomeField.resignFirstResponder()
+            return true
+        }
+        
+        return false
+    }
     // END-UOC-4
     
     
