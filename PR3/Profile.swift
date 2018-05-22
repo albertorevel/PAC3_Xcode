@@ -26,6 +26,10 @@ class Profile: NSObject, NSCoding {
     var company: String
     var income: Int
     
+//    enum ProfileKeys: String {
+//        case 
+//    }
+    
     init(name: String, surname: String, streetAddress: String, city: String, occupation: String, company: String, income: Int) {
         self.name = name
         self.surname = surname

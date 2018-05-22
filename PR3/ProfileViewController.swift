@@ -9,6 +9,7 @@ import UIKit
 
 class ProfileViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var currentProfile: Profile?
+    var storage: Storage?
     
     @IBOutlet weak var profileImage: UIImageView!
     
@@ -19,6 +20,8 @@ class ProfileViewController: UITableViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var occupationField: UITextField!
     @IBOutlet weak var companyField: UITextField!
     @IBOutlet weak var incomeField: UITextField!
+    
+    let IMAGE_KEY = "profile_image"
     
     override func viewDidLoad() {
         profileImage.image = loadProfileImage()
@@ -46,6 +49,9 @@ class ProfileViewController: UITableViewController, UIImagePickerControllerDeleg
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        storage = Storage()
+        
     }
     
     @objc func dismissKeyboard() {
@@ -85,7 +91,8 @@ class ProfileViewController: UITableViewController, UIImagePickerControllerDeleg
     
     
     // BEGIN-UOC-5
-    @IBAction func openCameraButton(sender: AnyObject) {
+    @IBAction func updateProfilePhoto(sender: AnyObject) {
+
         let imagePicker = UIImagePickerController()
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -96,17 +103,13 @@ class ProfileViewController: UITableViewController, UIImagePickerControllerDeleg
         }
         
         imagePicker.delegate = self
-        imagePicker.allowsEditing = true
+//        imagePicker.allowsEditing = true
         self.present(imagePicker, animated: true, completion: nil)
     }
-    
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-//        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-//        imagePicked.image = image
-//        dismiss(animated:true, completion: nil)
-//    }
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+            
+            
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             profileImage.image = image
             dismiss(animated: true, completion: { () -> Void in
@@ -118,12 +121,17 @@ class ProfileViewController: UITableViewController, UIImagePickerControllerDeleg
     
     // BEGIN-UOC-6
     func loadProfileImage() -> UIImage? {
-        return UIImage(named: "EmptyProfile.png")
+        guard let loadedImage = storage?.image(forKey: IMAGE_KEY) else {
+            return UIImage(named: "EmptyProfile.png")
+        }
+        return loadedImage;
     }
     
     func saveProfileImage(_ image: UIImage) {
-        _ = image.imageOrientation
+        
+        storage?.setImage(image, forKey: IMAGE_KEY)
     }
+    
     // END-UOC-6
     
     // BEGIN-UOC-7
