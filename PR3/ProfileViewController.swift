@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var currentProfile: Profile?
-    var storage: Storage?
+    var storage: Storage!
     
     @IBOutlet weak var profileImage: UIImageView!
     
@@ -24,13 +24,16 @@ class ProfileViewController: UITableViewController, UIImagePickerControllerDeleg
     let IMAGE_KEY = "profile_image"
     
     override func viewDidLoad() {
+        storage = Storage()
+        
         profileImage.image = loadProfileImage()
         
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
         profileImage.clipsToBounds = true
         
         currentProfile = loadProfileData()
-        // BEGIN-UOC-4
+    
+    // BEGIN-UOC-4
         
         // We initialize fields with loaded data
         
@@ -49,8 +52,6 @@ class ProfileViewController: UITableViewController, UIImagePickerControllerDeleg
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
-        
-        storage = Storage()
         
     }
     
@@ -109,7 +110,6 @@ class ProfileViewController: UITableViewController, UIImagePickerControllerDeleg
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
             
-            
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             profileImage.image = image
             dismiss(animated: true, completion: { () -> Void in
@@ -121,9 +121,11 @@ class ProfileViewController: UITableViewController, UIImagePickerControllerDeleg
     
     // BEGIN-UOC-6
     func loadProfileImage() -> UIImage? {
-        guard let loadedImage = storage?.image(forKey: IMAGE_KEY) else {
-            return UIImage(named: "EmptyProfile.png")
-        }
+//        guard let loadedImage = storage?.image(forKey: IMAGE_KEY) else {
+//            return UIImage(named: "EmptyProfile.png")
+//        }
+        let loadedImage = storage?.image(forKey: IMAGE_KEY)
+        
         return loadedImage;
     }
     
