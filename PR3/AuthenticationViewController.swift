@@ -63,6 +63,9 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     }
     
     // BEGIN-UOC-2
+    
+    // It automatically change field who is in focus when user introduce a symbol in a field. If it's the last field, it call
+    // the authentication method.
     @IBAction func editingChanged(_ sender: UITextField) {
         switch sender {
         case firstField:
@@ -89,42 +92,42 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         
         if validCode {
             // BEGIN-UOC-3
+            // Here we define transitions that will be fired on view change
+            
             let width = view.frame.width
             
             self.textLabelTopConstraint.constant = -self.textLabelTopConstraint.constant
             backButtonLeadingConstraint.constant = width
             nextButtonTrailingConstant.constant = -width
             
-            UIView.animate(withDuration: 1,
-                           delay: 0,
-                           options: [],
-                           animations: {
-                            
-                            
-                            
-                            self.firstField.alpha = 0
-                            self.secondField.alpha = 0
-                            self.thirdField.alpha = 0
-                            self.fourthField.alpha = 0
-                            
-                            self.firstFLabel.alpha = 0
-                            self.secondFLabel.alpha = 0
-                            self.thirdFLabel.alpha = 0
-                            self.fourthFLabel.alpha = 0
-                            
-                            self.view.layoutIfNeeded()
-                           
-                            
-            },
-                           completion: { _ in
-                            
-                            self.textLabel.alpha = 0
-                            self.performSegue (withIdentifier: "SegueToMainNavigation", sender: self)
-                            
+            UIView.animate(
+                withDuration: 1,
+                delay: 0,
+                options: [],
+                animations: {
+                    
+                    //Fields that will fade out
+                    self.firstField.alpha = 0
+                    self.secondField.alpha = 0
+                    self.thirdField.alpha = 0
+                    self.fourthField.alpha = 0
+                    
+                    self.firstFLabel.alpha = 0
+                    self.secondFLabel.alpha = 0
+                    self.thirdFLabel.alpha = 0
+                    self.fourthFLabel.alpha = 0
+                    
+                    self.view.layoutIfNeeded()
+                },
+                completion: { _ in
+                    
+                    // When transitions are done, we perform segue
+                    self.textLabel.alpha = 0
+                    self.performSegue (withIdentifier: "SegueToMainNavigation", sender: self)
             })
             
-            
             // END-UOC-3
+            
         } else {
             let errorMessage = "Sorry, the entered code is not valid"
             let errorTitle = "We could not autenticate you"

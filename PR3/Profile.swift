@@ -17,7 +17,7 @@ import Foundation
 
 import Foundation
 
-class Profile: NSObject, NSCoding {
+class Profile: NSObject, Codable {
     var name: String
     var surname: String
     var streetAddress: String
@@ -25,10 +25,6 @@ class Profile: NSObject, NSCoding {
     var occupation: String
     var company: String
     var income: Int
-    
-//    enum ProfileKeys: String {
-//        case 
-//    }
     
     init(name: String, surname: String, streetAddress: String, city: String, occupation: String, company: String, income: Int) {
         self.name = name

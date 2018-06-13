@@ -80,16 +80,15 @@ class LoginViewController: UIViewController {
     
     // BEGIN-UOC-1
     
+    // It manages return button on login view fields
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         switch textField {
             
         case usernameField:
-            
             passwordField.becomeFirstResponder()
             
         default:
-            
             passwordField.resignFirstResponder()
             loginTapped(loginButton)
         }
